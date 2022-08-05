@@ -1,0 +1,12 @@
+[status]
+  showUntrackedFiles = all
+[user]
+	name = Douglas Delabrida
+	email = dougdelabrida@gmail.com
+	signingkey = 874EB6190FA3927F
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg2
+[init]
+	defaultBranch = main
