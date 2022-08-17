@@ -113,4 +113,5 @@ return require('packer').startup(function()
       require('nvim-autopairs').setup() 
     end
   }
+  use 'tpope/vim-fugitive'
 end)
