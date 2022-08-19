@@ -7,6 +7,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<leader>?', vim.lsp.buf.signature_help, opts)
   vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover, opts)
   vim.keymap.set('n', '<leader>,', vim.lsp.buf.code_action, opts)
+  vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, opts)
   vim.api.nvim_create_autocmd('BufWritePre', { buffer = bufnr, callback = vim.lsp.buf.formatting_seq_sync })
 end
 
