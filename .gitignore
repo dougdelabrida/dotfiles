@@ -1,2 +1,2 @@
-zsh/.config/zsh/config.d/secret.zsh
-nvim/.config/nvim/plugin/packer_compiled.lua
+/zsh/.config/zsh/config.d/secret.zsh
+/nvim/.config/nvim/plugin/packer_compiled.lua
