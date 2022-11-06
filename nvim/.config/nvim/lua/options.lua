@@ -8,6 +8,7 @@ opt.tabstop = 2
 opt.softtabstop = 2
 opt.shiftwidth = 2
 opt.expandtab = true
+opt.relativenumber = true
 -- opt.cursorcolumn = true
 opt.splitbelow = true
 opt.splitright = true

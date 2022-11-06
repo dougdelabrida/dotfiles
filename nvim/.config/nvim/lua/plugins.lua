@@ -1,4 +1,3 @@
--- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()
@@ -17,14 +16,14 @@ return require('packer').startup(function()
   use {
     'kyazdani42/nvim-tree.lua',
     config = function()
-      require("nvim-tree").setup()
+      require('nvim-tree').setup()
     end,
-    requires = {'kyazdani42/nvim-web-devicons'}
+    requires = { 'kyazdani42/nvim-web-devicons' }
   }
 
   use 'elixir-editors/vim-elixir'
 
-  use 'vyperlang/vim-vyper' 
+  use 'vyperlang/vim-vyper'
 
   -- appeareance
   -- theme
@@ -41,27 +40,27 @@ return require('packer').startup(function()
   use {
     'nvim-treesitter/nvim-treesitter',
     requires = { 'nvim-treesitter/nvim-treesitter-textobjects', 'nvim-treesitter/playground' },
-    config = function() require("tree-sitter") end
+    config = function() require('tree-sitter') end
   }
 
   -- TODO: define
   use 'yuttie/comfortable-motion.vim'
   use {
     'lewis6991/gitsigns.nvim',
-    requires = {'nvim-lua/plenary.nvim'},
+    requires = { 'nvim-lua/plenary.nvim' },
     config = function()
       require('git')
     end
   }
 
   -- Language server
-
   use {
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig',
-    config = function()
-      require('lsp')
-    end
   }
+
+  require('lsp')
 
   -- autcomplete
 
@@ -74,15 +73,15 @@ return require('packer').startup(function()
   use {
     'hrsh7th/nvim-cmp',
     config = function()
-      require('cmp_setup')   
+      require('cmp_setup')
     end
   }
 
- -- formatter
+  -- formatter
   use {
     'jose-elias-alvarez/null-ls.nvim',
     config = function()
-      require('formatter') 
+      require('formatter')
     end
   }
 
@@ -96,21 +95,24 @@ return require('packer').startup(function()
   }
   use {
     'folke/trouble.nvim',
-    requires = "kyazdani42/nvim-web-devicons",
+    requires = 'kyazdani42/nvim-web-devicons',
     config = function()
-      require("trouble").setup() 
+      require('trouble').setup()
     end
   }
+
+  use 'folke/lsp-colors.nvim'
+
   use {
     'christoomey/vim-tmux-navigator',
-    config = function ()
+    config = function()
       vim.g.tmux_navigator_disable_when_zoomed = true
     end
   }
   use {
     'windwp/nvim-autopairs',
     config = function()
-      require('nvim-autopairs').setup() 
+      require('nvim-autopairs').setup()
     end
   }
   use 'tpope/vim-fugitive'
