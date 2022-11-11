@@ -21,22 +21,11 @@ return require('packer').startup(function()
     requires = { 'kyazdani42/nvim-web-devicons' }
   }
 
-  use 'elixir-editors/vim-elixir'
-
-  use 'vyperlang/vim-vyper'
-
   -- appeareance
   -- theme
 
-  use {
-    'projekt0n/github-nvim-theme',
-    config = function()
-      require('github-theme').setup({
-        theme_style = 'dark',
-        dark_float = true
-      })
-    end
-  }
+  use 'folke/tokyonight.nvim'
+
   use {
     'nvim-treesitter/nvim-treesitter',
     requires = { 'nvim-treesitter/nvim-treesitter-textobjects', 'nvim-treesitter/playground' },
@@ -62,18 +51,20 @@ return require('packer').startup(function()
 
   require('lsp')
 
-  -- autcomplete
+  -- autcomplete & snippets
 
-  use 'hrsh7th/vim-vsnip'
-  use 'hrsh7th/vim-vsnip-integ'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
   use {
     'hrsh7th/nvim-cmp',
+    requires = {
+      'hrsh7th/vim-vsnip-integ',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'L3MON4D3/LuaSnip',
+    },
     config = function()
-      require('cmp_setup')
+      require('cmp-setup')
     end
   }
 
@@ -90,7 +81,11 @@ return require('packer').startup(function()
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     config = function()
-      require('lualine').setup()
+      require('lualine').setup({
+        options = {
+          theme = 'tokyonight'
+        }
+      })
     end
   }
   use {

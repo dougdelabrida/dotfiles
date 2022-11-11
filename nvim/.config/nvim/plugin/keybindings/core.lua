@@ -17,3 +17,6 @@ map('n', 'n', 'nzz')
 map('n', 'N', 'Nzz')
 map('n', '*', '*zz')
 map('n', '#', '#zz')
+-- make life easier
+map('n', '<leader>w', ':w<CR>', opts)
+map('n', '<leader>ff', ':NvimTreeFindFile<CR>', opts)
