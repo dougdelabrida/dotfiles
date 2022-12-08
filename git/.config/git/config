@@ -10,3 +10,9 @@
 	program = gpg2
 [init]
 	defaultBranch = main
+[core]
+	editor = nvim
+[alias]
+  s = !git status -s
+  c = !git add --all && git commit -m
+  l = !git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
