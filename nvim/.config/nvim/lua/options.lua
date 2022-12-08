@@ -14,6 +14,7 @@ opt.splitbelow = true
 opt.splitright = true
 opt.cursorline = true
 opt.signcolumn = 'yes'
+opt.undofile = true
 
 if vim.fn.executable("rg") then
   vim.o.grepprg = "rg --vimgrep --hidden -g !.git"
