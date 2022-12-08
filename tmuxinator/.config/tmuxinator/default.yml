@@ -1,0 +1,10 @@
+name: <%= @settings["name"] %>
+root: <%= @settings["root"] %>
+
+windows:
+  - "": 
+      layout: main-horizontal
+      panes: 
+        - nvim 
+  - "": clear
+
