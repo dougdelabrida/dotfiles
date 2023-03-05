@@ -1,16 +1,16 @@
 require('mason').setup({
-  ui = { border = 'rounded' }
+  ui = { border = 'single' }
 })
 
 require('mason-lspconfig').setup({
-  ensure_installed = { 'sumneko_lua', 'rust_analyzer', 'tsserver', 'elixirls' },
+  ensure_installed = { 'rust_analyzer', 'tsserver', 'elixirls' },
 })
 
 vim.diagnostic.config({
   virtual_text = false,
   severity_sort = true,
   float = {
-    border = 'rounded',
+    border = 'single',
     source = 'always',
     header = '',
     prefix = '',
@@ -19,12 +19,12 @@ vim.diagnostic.config({
 
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
   vim.lsp.handlers.hover,
-  { border = 'rounded' }
+  { border = 'single' }
 )
 
 vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
   vim.lsp.handlers.signature_help,
-  { border = 'rounded' }
+  { border = 'single' }
 )
 
 vim.api.nvim_create_autocmd('User', {
@@ -78,17 +78,6 @@ require('mason-lspconfig').setup_handlers({
       settings = {
         completions = {
           completeFunctionCalls = true
-        }
-      }
-    })
-  end,
-  ['sumneko_lua'] = function()
-    lspconfig['sumneko_lua'].setup({
-      settings = {
-        Lua = {
-          diagnostics = {
-            globals = { 'vim', 'use' }
-          }
         }
       }
     })
