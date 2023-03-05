@@ -2,11 +2,11 @@ local gitsigns = require('gitsigns')
 
 gitsigns.setup {
   signs = {
-    add          = { hl = 'GitGutterAdd', text = '┃' },
-    change       = { hl = 'GitGutterChange', text = '│' },
-    delete       = { hl = 'GitGutterDelete', text = '│' },
-    topdelete    = { hl = 'GitGutterDelete', text = '│' },
-    changedelete = { hl = 'GitGutterDelete', text = '│' },
+    add          = { hl = 'GitGutterAdd', text = '║' },
+    change       = { hl = 'GitGutterChange', text = '║' },
+    delete       = { hl = 'GitGutterDelete', text = '║' },
+    topdelete    = { hl = 'GitGutterDelete', text = '║' },
+    changedelete = { hl = 'GitGutterDelete', text = '║' },
   },
   on_attach = function(bufnr)
     local function map(mode, lhs, rhs, opts)
