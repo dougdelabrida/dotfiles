@@ -14,8 +14,6 @@ ZSH_THEME="spaceship"
 source $ZSH/oh-my-zsh.sh
 
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 export MANPAGER="nvim +Man!"
 export EDITOR='nvim'
@@ -23,4 +21,3 @@ export EDITOR='nvim'
 for conf in "$HOME/.config/zsh/config.d/"*.zsh; do
   source "${conf}"
 done
-
