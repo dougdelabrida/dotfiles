@@ -49,8 +49,6 @@ return require('packer').startup(function()
     'neovim/nvim-lspconfig',
   }
 
-  require('lsp')
-
   -- autcomplete & snippets
 
   use {
@@ -65,6 +63,7 @@ return require('packer').startup(function()
     },
     config = function()
       require('cmp-setup')
+      require('lsp')
     end
   }
 
