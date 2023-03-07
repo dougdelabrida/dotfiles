@@ -3,7 +3,7 @@ require('mason').setup({
 })
 
 require('mason-lspconfig').setup({
-  ensure_installed = { 'rust_analyzer', 'tsserver', 'elixirls' },
+  ensure_installed = { 'rust_analyzer', 'typescript-language-server', 'elixirls' },
 })
 
 vim.diagnostic.config({
