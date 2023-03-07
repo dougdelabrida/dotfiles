@@ -21,3 +21,5 @@ export EDITOR='nvim'
 for conf in "$HOME/.config/zsh/config.d/"*.zsh; do
   source "${conf}"
 done
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
