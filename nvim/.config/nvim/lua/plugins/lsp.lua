@@ -60,6 +60,22 @@ return {
 
       local lspconfig = require('lspconfig')
 
+      local on_attach = function(client, bufnr)
+        -- Link to the commands created previously
+        vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
+        -- Ensure auto formatting before when saving
+        if client.supports_method("textDocument/formatting") then
+          vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            group = augroup,
+            buffer = bufnr,
+            callback = function()
+              vim.lsp.buf.format({ bufnr = bufnr })
+            end,
+          })
+        end
+      end
+
       local lsp_defaults = {
         flags = {
           debounce_text_changes = 150,
@@ -67,21 +83,7 @@ return {
         capabilities = require('cmp_nvim_lsp').default_capabilities(
           vim.lsp.protocol.make_client_capabilities()
         ),
-        on_attach = function(client, bufnr)
-          -- Link to the commands created previously
-          vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
-          -- Ensure auto formatting before when saving
-          if client.supports_method("textDocument/formatting") then
-            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-            vim.api.nvim_create_autocmd("BufWritePre", {
-              group = augroup,
-              buffer = bufnr,
-              callback = function()
-                vim.lsp.buf.format()
-              end,
-            })
-          end
-        end
+        on_attach = on_attach
       }
 
       lspconfig.util.default_config = vim.tbl_deep_extend(
@@ -93,7 +95,6 @@ return {
       local default_handler = function(server)
         lspconfig[server].setup({})
       end
-
 
       mason_lspconfig.setup_handlers({
         default_handler,
@@ -120,5 +121,50 @@ return {
         end
       })
     end
+  },
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function()
+      local null_ls = require("null-ls")
+
+      local root_has_file = function(files)
+        return function(utils)
+          return utils.root_has_file(files)
+        end
+      end
+
+      local eslint_root_files = { ".eslintrc", ".eslintrc.js", ".eslintrc.json" }
+      local prettier_root_files = { ".prettierrc", ".prettierrc.js", ".prettierrc.json" }
+      local stylua_root_files = { "stylua.toml", ".stylua.toml" }
+
+      local opts = {
+        eslint_formatting = {
+          condition = function(utils)
+            local has_eslint = root_has_file(eslint_root_files)(utils)
+            local has_prettier = root_has_file(prettier_root_files)(utils)
+            return has_eslint and not has_prettier
+          end,
+        },
+        eslint_diagnostics = {
+          condition = root_has_file(eslint_root_files),
+        },
+        prettier_formatting = {
+          condition = root_has_file(prettier_root_files),
+        },
+        stylua_formatting = {
+          condition = root_has_file(stylua_root_files),
+        },
+      }
+
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.diagnostics.eslint_d.with(opts.eslint_diagnostics),
+          null_ls.builtins.formatting.eslint_d.with(opts.eslint_formatting),
+          null_ls.builtins.formatting.prettier.with(opts.prettier_formatting),
+          null_ls.builtins.formatting.stylua.with(opts.stylua_formatting),
+          null_ls.builtins.code_actions.eslint_d.with(opts.eslint_diagnostics),
+        },
+      })
+    end,
   }
 }
