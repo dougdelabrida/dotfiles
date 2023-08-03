@@ -1,4 +1,4 @@
 return {
-  "folke/tokyonight.nvim",
+  "rebelot/kanagawa.nvim",
   "kyazdani42/nvim-web-devicons"
 }

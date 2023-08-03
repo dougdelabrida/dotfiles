@@ -2,9 +2,9 @@ name: <%= @settings["name"] %>
 root: <%= @settings["root"] %>
 
 windows:
-  - "": 
+  - " Editor": 
       layout: main-horizontal
       panes: 
         - nvim 
-  - "": clear
+  - " Terminal": clear
 

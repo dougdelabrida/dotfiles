@@ -9,16 +9,16 @@ set-option -g message-command-style "bg=green,fg=black"
 set -g status-style default
 set -g status-right-length 80
 set -g status-left-length 100
-set -g window-status-separator ""
-set -g status-bg "black"
+set -g status-bg "default"
 
 #Bars ---------------------------------
-set -g status-left "#[bg=white,fg=black italics]● #S #[fg=black,bg=black]"
+set -g status-left "#[bg=default,fg=white][#S] "
 
-set -g status-right "#[fg=#37354A]#[bg=#37354A,fg=brightwhite] %Y-%m-%d #[fg=#37354A,bg=#2D2B40] #[fg=brightwhite,bg=#2D2B40]%I:%M#[fg=#2D2B40]#[fg=#19172C,bg=#2D2B40]#[bg=white,fg=#19172C italics] @#H "
+set -g status-right "#[bg=default,fg=white] %Y-%m-%d #[bg=white,fg=black] %I:%M #[bg=default,fg=white] @#H "
 
 # Windows ------------------------------
+set -g window-status-separator "|"
 set -g status-justify left
 
-set -g window-status-format "#[fg=#2D2B40]#[fg=brightwhite,bg=#2D2B40] #{?window_zoomed_flag,  ,}#W #[bg=black,fg=#2D2B40]"
-set -g window-status-current-format "#[fg=green]#[bg=green,fg=black] #W #{?window_zoomed_flag,  ,}#[fg=green,bg=black]"
+set -g window-status-format "#[fg=white,bg=brightblack] #{?window_zoomed_flag,  ,}#W "
+set -g window-status-current-format "#[bg=brightwhite,fg=black] #W #{?window_zoomed_flag,  ,}"
