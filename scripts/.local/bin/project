@@ -5,8 +5,9 @@ set -eu
 RALLY=project
 VERSION=0.0.1
 
-TARGET=$(ls -d ~/dotfiles ~/workspace/*/* | fzf --preview "exa --tree --icons --level 3 --git-ignore {}")
+TARGET=$(ls -d ~/dotfiles ~/workspace/*/* ~/Herd/*/* | fzf --preview "exa --tree --icons --level 3 --git-ignore {}")
 NAME=$(basename $TARGET)
-SESSION_NAME=$(echo $NAME | tr [:lower:] [:upper:])
+PARENT_DIR=$(basename "$(dirname "$TARGET")")
+SESSION_NAME=$(echo "$PARENT_DIR/$NAME" | tr [:lower:] [:upper:])
 
 tmuxinator start $NAME || tmuxinator start default name=$SESSION_NAME root=$TARGET

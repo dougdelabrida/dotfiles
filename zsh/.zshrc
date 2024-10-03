@@ -23,3 +23,17 @@ for conf in "$HOME/.config/zsh/config.d/"*.zsh; do
 done
 
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/delabrida/.local/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/delabrida/.local/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/delabrida/.local/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/delabrida/.local/google-cloud-sdk/completion.zsh.inc'; fi
+
+# bun completions
+[ -s "/Users/delabrida/.bun/_bun" ] && source "/Users/delabrida/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH=$HOME/development/flutter/bin:$PATH

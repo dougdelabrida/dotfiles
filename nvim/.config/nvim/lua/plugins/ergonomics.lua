@@ -1,10 +1,13 @@
 return {
-  "yuttie/comfortable-motion.vim",
   "tpope/vim-fugitive",
   {
     "kyazdani42/nvim-tree.lua",
     config = function()
-      require("nvim-tree").setup()
+      require("nvim-tree").setup({
+        view = {
+          adaptive_size = true
+        }
+      })
     end,
     dependencies = { "kyazdani42/nvim-web-devicons" }
   },
